@@ -102,5 +102,4 @@ Description of Resource/Sample Response:
 'cumulativeFee': null,
 'type': 'MARKET'
 }
-
 ```
