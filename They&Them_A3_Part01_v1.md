@@ -36,6 +36,8 @@ Sample Request:
 
 Description of Resource/Sample Response:
 
+***AJ's Notes: Add a Description on what this sample response is returning***
+
 ```
 [
 {
@@ -78,6 +80,9 @@ Sample request:
 
 Description of Resource/Sample Response:
 
+***AJ's Notes: Keep the results and parameters consistent. Ex See Safrans results above***
+***Add a Description on what this sample response is returning***
+
 ```
 {
 'id': '16264469',
@@ -116,7 +121,7 @@ Sample request:
 `https://www.3040Crypto.They.Them/api/v1/cancel/362321?&key=dadafolnrn1o2in4askldmk1i4215msakr0195u1`
 
 Description of Resource/Sample Response:
-  - Returns the
+  - Returns the order in which the user is canceling. The status of the order will be set to 'cancel' such that another program going through the list of orders will remove all canceled orders
 
 ```
 {
