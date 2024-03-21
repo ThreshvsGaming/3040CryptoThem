@@ -82,26 +82,17 @@ Description of Resource/Sample Response:
 
 3. Canceling an order
 
-Endpoint: _/cancel/{orderId}_ \
+Endpoint: _/cancel_ \
 Parameters:
   - orderId: The ID of the order you wish to cancel
 
 Sample request: 
-`https://www.3040Crypto.They.Them/api/v1/cancel/362321?&key=dadafolnrn1o2in4askldmk1i4215msakr0195u1`
+`https://www.3040Crypto.They.Them/api/v1/cancel?orderId=362321`
 
 Description of Resource/Sample Response:
-  - Returns the order in which the user is canceling. The status of the order will be set to 'cancel' such that another program going through the list of orders will remove all canceled orders
 
 ```
 {
-'date': '2024-11-13 00:38:32',
-'type': 'BUY',
-'orderId': '362321',
-'coinSymbol': 'BTC',
-'amount': '-0.00400000',
-'trxFee': '0.00000000',
-'status': cancel,
-'toAddress': null
-'price': 32462
+'status': success
 }
 ```
