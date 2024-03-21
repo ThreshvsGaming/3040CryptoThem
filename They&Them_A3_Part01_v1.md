@@ -2,7 +2,7 @@
 
 ## Description
 
-3040Crypto API provides a seamless and convenient platform to our partners and clients to access up-to-date cryptocurrency market information. Our API would be one of the only Canadian Cryptocurrency Companies to offer true Canadian dollar denominated information for each currency-pairs. Partners can access live exchange rates, automate trades, retrieve transaction history and much more, all in one-simple API with industry leading security standards.
+Our 3040Crypto API will provide a seamless and convenient platform to our partners and clients to access up-to-date cryptocurrency market information. This API will be one of the only Canadian Cryptocurrency Companies to offer true Canadian dollar denominated information for each currency-pairs and partners can access live exchange rates, automate trades, retrieve transaction history and much more, all in one-simple API with industry leading security standards.
 
 ## Base Endpoint
 
