@@ -21,8 +21,6 @@ Parameters:
   - ALL
 - type: Defines the type of the transaction. Default is set to ALL.
   - Options:
-    - DEPOSIT,
-    - WITHDRAW,
     - BUY,
     - SELL
     - ALL
@@ -32,12 +30,9 @@ Parameters:
     - ALL
 
 Sample Request:
-`https://www.3040Crypto.They.Them/api/v1/transactions?coin=BTC&type=BUY&size=100&key=dadafolnrn1o2in4askldmk1i4215msakr0195u1`
+`https://www.3040Crypto.They.Them/api/v1/transactions?coin=BTC&type=BUY&size=100`
 
 Description of Resource/Sample Response:
-
-***AJ's Notes: Add a Description on what this sample response is returning***
-
 ```
 [
 {
@@ -46,9 +41,7 @@ Description of Resource/Sample Response:
 'orderId': '362321',
 'coinSymbol': 'BTC',
 'amount': '-0.00400000',
-'trxFee': '0.00000000',
 'status': success,
-'toAddress': null
 'price': 32462
 },{...}
 ]
@@ -59,55 +52,31 @@ Description of Resource/Sample Response:
 Endpoint: _/submit/order_ \
 Parameters:
 
-- quantity: The quantity/amount to order
+- amount: The amount to order
+  - Options:
+    - Any valid float < 999999
+- price: The price per unit 
   - Options:
     - Any valid integer < 999999
-- unitPrice: The price per unit 
-  - Options:
-    - Any valid integer < 999999
-- symbol: The symbol for the cryptocurrency
-- orderSide: Buy-side or sell-side
+- coinSymbol: The symbol for the cryptocurrency
+- type: Buy or sell
   - Options:
     - BUY,
     - SELL
-- orderType: The type of order for the cryptocurrency
-  - Options:
-    - MARKET,
-    - LIMIT
   
 Sample request: 
-`https://www.3040Crypto.They.Them/api/v1/submit/order?quantity=1&unitPrice=4.3&symbol=BTC&orderSide=BUY&orderType=MARKET&key=dadafolnrn1o2in4askldmk1i4215msakr0195u1`
+`https://www.3040Crypto.They.Them/api/v1/submit/order?amount=0.5&price=40000&coinSymbol=BTC&type=BUY`
 
 Description of Resource/Sample Response:
-
-***AJ's Notes: Keep the results and parameters consistent. Ex See Safrans results above***
-***Add a Description on what this sample response is returning***
-
 ```
+[
 {
-'id': '16264469',
-'side': 'BUY',
-'date': '2019-07-09 21:22:33',
-'pricePerUnit': '4.300000000',
-'quantity': '1.00000000',
-'totalValue': '4.300000000',
-'market': {
-'tradeCoin': 'BTC',
-'baseCoin': 'BTC',
-'symbol': 'BTC',
-'state': null
-},
-'status': 'PENDING_NEW',
-'leavesQuantity': '0.00000000',
-'fillCount': '0',
-'tradedQuantity': '0.00000000',
-'cancelledQuantity': '0.00000000',
-'statusInfo': null,
-'totalValueTraded': null,
-'weightedAverageFillPrice': null,
-'cumulativeFee': null,
-'type': 'MARKET'
+'date': '2024-11-10 00:12:31',
+'amount': '0.5',
+'price': 39999.5
+'status': success,
 }
+]
 ```
 
 
@@ -136,8 +105,3 @@ Description of Resource/Sample Response:
 'price': 32462
 }
 ```
-
-
-
-
-
