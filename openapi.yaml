@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: 3040Crypto API
+  description: Our 3040Crypto API will provide a seamless and convenient platform to our partners and clients to access up-to-date cryptocurrency market information.
+externalDocs:
+  description: Github Documentation here
+  url: https://github.com/ThreshvsGaming/3040CryptoThem
+servers:
+  - url: https://www.3040Crypto.They.Them/api/v1/
+    description: Production server
+paths:
+  /cancel:
+    delete:
+      summary: Cancels an order
+      description: Cancel a specific order using the order's id
+      operationId: cancel
+      parameters:
+        - name: orderId
+          in: query
+          description: id of the order.
+          required: true
+          schema:
+            type: integer
+            format: int64
+          example: '362321'
+      responses:
+        '400':
+          description: Invalid order id value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SunriseSunsetResponse'
+components:
+  schemas:
+    SunriseSunsetResponse:
+      title: Response
+      type: object
+      properties:
+        results:
+          type: object
+          properties:
+            date:
+              type: string
+              description: The date the order was created
+              example: '2024-11-13 00:38:32'
+            type:
+              type: string
+              description: Needs a description
+              example: 'BUY'
+            orderId:
+              type: integer
+              format: int64
+              description: A unique ID for the order
+              example: 362321
+            coinSymbol:
+              type: string
+              description: Needs a description
+              example: 'BTC'
+            amount:
+              type: number
+              format: float
+              description: Needs a description
+              example: -0.00400000
+            status:
+              type: string
+              description: Needs a description
+              example: success
+            price:
+              type: number
+              format: float
+              description: Needs a description
+              example: 32462
+        status:
+          type: string
+          description: |-
+            Four possible statuses:
+             
+            * `OK`: No errors occurred. 
+            * `INVALID_REQUEST`: Either lat or lng parameters are missing or invalid. 
+            * `INVALID_DATE`: The date parameter is missing or invalid; 
+            * `UNKNOWN_ERROR`: The request could not be processed due to a server error. The request may succeed if you try again.
+          example: OK
