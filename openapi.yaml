@@ -9,10 +9,105 @@ externalDocs:
 servers:
   - url: https://www.3040Crypto.They.Them/api/v1/
     description: Production server
+tags:
+  - name: Market
+    description: Everything about 3040Crypto's Crypto Market
+  - name: Orders
+    description: Everything about Orders
+
 paths:
-  /cancel:
+  /market/transactions/:
+    get:
+      tags:
+        - Market
+        
+      summary: Views the transaction history
+      description: Views the transaction history 3040Crypto's Market
+      operationId: transaction
+      parameters:
+        - name: coinSymbol
+          in: query
+          description: The symbol of the coin that the user is searching.
+          required: true
+          example: 'BTC'
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: The type of transaction that the user is searching.
+          required: true
+          schema:
+            type: string
+            default: 'ALL'
+            enum:
+              - 'ALL'
+              - 'BUY'
+              - 'SELL'
+        - name: size
+          in: query
+          description: The amount of transactions that the user wants to access.
+          schema:
+            type: integer
+            format: int64
+            default: ALL
+      responses:
+        '200':
+          description: Sucess
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketData'
+        '400':
+          description: '0 transactions queried'
+  /orders/submit:
+    put:
+      tags:
+        - Orders
+      summary: Submits an order in to 3040Crypto's Market
+      description: Submits an order 
+      operationId: submit
+      parameters:
+        - name: coinSymbol
+          in: query
+          description: The symbol of the coin that the order is submitting.
+          required: true
+          example: 'BTC'
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: The type of transaction that the order is submitting.
+          required: true
+          schema:
+            type: string
+            default: 'BUY'
+            enum:
+              - 'BUY'
+              - 'SELL'
+        - name: amount
+          in: query
+          description: The amount of crypto that the order is submitting.
+          schema:
+            type: number
+            format: float
+            default: 0
+        - name: price
+          in: query
+          description: The price per amount that the order is submitting.
+          schema:
+            type: number
+            format: float
+            default: 0
+      responses:
+        '404':
+          description: Invalid order id value
+        '200':
+          description: Sucessful operation
+  /orders/cancel:
     delete:
-      summary: Cancels an order
+      tags:
+        - Orders
+      summary: Cancels an order in the Market
       description: Cancel a specific order using the order's id
       operationId: cancel
       parameters:
@@ -25,16 +120,14 @@ paths:
             format: int64
           example: '362321'
       responses:
-        '400':
+        '404':
           description: Invalid order id value
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SunriseSunsetResponse'
+        '200':
+          description: Sucessful operation
+          
 components:
   schemas:
-    SunriseSunsetResponse:
-      title: Response
+    MarketData:
       type: object
       properties:
         results:
@@ -71,13 +164,4 @@ components:
               format: float
               description: Needs a description
               example: 32462
-        status:
-          type: string
-          description: |-
-            Four possible statuses:
-             
-            * `OK`: No errors occurred. 
-            * `INVALID_REQUEST`: Either lat or lng parameters are missing or invalid. 
-            * `INVALID_DATE`: The date parameter is missing or invalid; 
-            * `UNKNOWN_ERROR`: The request could not be processed due to a server error. The request may succeed if you try again.
-          example: OK
+
